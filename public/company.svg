@@ -1,0 +1,12 @@
+<svg width="96" height="87" viewBox="0 0 96 87" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="19.9238" cy="19.5" r="19" fill="#ED1B2F"/>
+<mask id="path-2-inside-1_0_2036" fill="white">
+<rect x="24.9238" y="32.5" width="19" height="51" rx="2"/>
+</mask>
+<rect x="24.9238" y="32.5" width="19" height="51" rx="2" stroke="#2A2B6B" stroke-width="6" mask="url(#path-2-inside-1_0_2036)"/>
+<rect x="32.9238" y="59.5" width="3" height="11" rx="1.5" fill="#011942"/>
+<rect x="32.9238" y="44.5" width="3" height="11" rx="1.5" fill="#011942"/>
+<path d="M33.9238 33.5V15.6492C33.9238 14.7489 34.5254 13.9596 35.3935 13.7208L66.3935 5.19584C67.6667 4.8457 68.9238 5.80375 68.9238 7.12425V81.5" stroke="#2A2B6B" stroke-width="3"/>
+<rect x="12.9238" y="80.5" width="79" height="3" rx="1.5" fill="#2A2B6B"/>
+<path d="M80.9238 27.5H70.9238C69.8193 27.5 68.9238 28.3954 68.9238 29.5V79.5C68.9238 80.6046 69.8193 81.5 70.9238 81.5H80.9238C82.0284 81.5 82.9238 80.6046 82.9238 79.5V29.5C82.9238 28.3954 82.0284 27.5 80.9238 27.5Z" fill="#2A2B6B" stroke="#2A2B6B" stroke-width="3"/>
+</svg>

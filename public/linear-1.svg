@@ -1,0 +1,11 @@
+<svg class="section-deco section-deco-3" xmlns="http://www.w3.org/2000/svg" width="1599" height="320" viewBox="0 0 1599 320" fill="none">
+        <g style="mix-blend-mode: darken" opacity="0.8">
+          <path d="M1623 0.5C1623 125.808 518.667 194.726 -14 211.022V267C808.5 352 1268.5 325.306 1623 242V0.5Z" fill="url(#paint0_linear_11728_50740)"></path>
+        </g>
+        <defs>
+          <linearGradient id="paint0_linear_11728_50740" x1="184.702" y1="159.79" x2="1468.36" y2="364.908" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#328AE2"></stop>
+            <stop offset="1" stop-color="#FF0D39"></stop>
+          </linearGradient>
+        </defs>
+      </svg>

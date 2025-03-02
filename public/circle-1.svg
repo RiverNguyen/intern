@@ -1,0 +1,10 @@
+<svg class="section-deco section-deco-1" width="559" height="475" viewBox="0 0 559 475" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <ellipse opacity="0.3" cx="278.939" cy="278.366" rx="278.939" ry="278.366" transform="matrix(-1 0 0 1 558.062 0.943359)" fill="url(#paint0_linear_11728_50391)"></ellipse>
+        <defs>
+          <linearGradient id="paint0_linear_11728_50391" x1="578.62" y1="-123.48" x2="146.243" y2="450.116" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#3E4089"></stop>
+            <stop offset="0.339482" stop-color="#3E4089"></stop>
+            <stop offset="1" stop-color="#3E4089" stop-opacity="0"></stop>
+          </linearGradient>
+        </defs>
+      </svg>
