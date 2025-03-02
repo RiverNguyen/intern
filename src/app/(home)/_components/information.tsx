@@ -1,10 +1,37 @@
+import { useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { inter, quicksand } from "@/config/font";
 import { cn } from "@/lib/utils";
 import { ArrowRight, Dot } from "lucide-react";
 import Image from "next/image";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Information = () => {
+  const textRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (!textRef.current) return;
+    gsap.fromTo(
+      textRef.current.children,
+      { opacity: 0, y: 50 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        stagger: 0.3,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: textRef.current,
+          start: "top 80%",
+          toggleActions: "play none none none",
+        },
+      }
+    );
+  }, []);
+
   return (
     <div
       className={`h-[1100px] md:h-screen w-full relative ${inter.className}
@@ -12,7 +39,10 @@ const Information = () => {
       md:bg-[url('/images/hand.png'),_url('/images/background.png')] md:bg-cover md:bg-center`}
     >
       <div className="w-60 h-12 bg-white absolute bottom-0 right-0 md:block hidden" />
-      <div className="container mx-auto text-white h-full flex flex-col pt-12 md:pt-0 md:justify-center items-center md:items-start relative z-10">
+      <div
+        className="container mx-auto text-white h-full flex flex-col pt-12 md:pt-0 md:justify-center items-center md:items-start relative z-10"
+        ref={textRef}
+      >
         <p className="flex font-semibold items-center">
           <Dot className="size-8 -mx-2" />
           CÔNG TY CỔ PHẦN TẬP ĐOÀN AMI&M VIỆT NAM
@@ -30,11 +60,10 @@ const Information = () => {
           </p>
           <p className="w-[334px] md:w-[582px] text-sm md:text-lg">
             Tại Ami&M, chúng tôi được sống và làm việc hết mình!
-            <br className="md:block hidden" /> {""}
-            Được gắn bó và kết nối cũng những người bằng hữu mà chúng tôi gọi là
-            ANH EM - AM, được bứt phá các giới hạn bản thân để phát triển, thoả
-            sức thử thách và gắn bó nhiệt thành để cùng nhau kiến tạo các giá
-            trị mà mình tin tưởng.
+            <br className="md:block hidden" /> Được gắn bó và kết nối cùng những
+            người bằng hữu mà chúng tôi gọi là ANH EM - AM, được bứt phá các
+            giới hạn bản thân để phát triển, thoả sức thử thách và gắn bó nhiệt
+            thành để cùng nhau kiến tạo các giá trị mà mình tin tưởng.
           </p>
           <Button
             variant="ghost"

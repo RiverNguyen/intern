@@ -43,7 +43,7 @@ const Mission = () => {
         </h3>
         <p
           className="text-2xl md:text-[40px] font-bold text-center bg-clip-text text-transparent 
-            bg-gradient-to-r from-blue-500 via-purple-500 to-red-500 mt-4"
+            bg-gradient-to-r from-blue-500 via-purple-500 to-red-500 mt-4 leading-normal"
         >
           Mang lại cuộc sống tốt đẹp hơn <br /> cho những người đồng hành
         </p>

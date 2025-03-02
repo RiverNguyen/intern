@@ -1,11 +1,16 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { inter } from "@/config/font";
 import { ArrowRightIcon, Dot } from "lucide-react";
 import Image from "next/image";
 import { LogoDesktop, LogoMobile } from "./logo-position";
+import { useState } from "react";
 
 const Invest = () => {
+  const [bgImage, setBgImage] = useState("/images/invest-2.png");
+
   const statsData = [
     {
       value: "686",
@@ -49,7 +54,7 @@ const Invest = () => {
             <Dot className="size-8" />
             LĨNH VỰC ĐẦU TƯ
           </h3>
-          <p className="text-transparent bg-gradient-to-r from-blue-500 from-10% to-[#FF0D39] to-90% bg-clip-text text-2xl md:text-[32px] font-bold w-[336px] md:w-[564px]">
+          <p className="leading-normal text-transparent bg-gradient-to-r from-blue-500 from-10% to-[#FF0D39] to-90% bg-clip-text text-2xl md:text-[32px] font-bold w-[336px] md:w-[564px]">
             Ami&M là đối tác tư vấn - đầu tư bền vững, phát triển dịch vụ cao
             cấp và nâng tầm giáo dục trải nghiệm.
           </p>
@@ -83,7 +88,10 @@ const Invest = () => {
             md:w-[872px] md:h-[872px] 
             p-6 rounded-full bg-gradient-to-b from-[#2F2E79] from-30% to-[#A61220]"
         >
-          <div className="absolute bg-[url(/images/invest-2.png)] inset-0 bg-cover bg-center rounded-full opacity-35"></div>
+          <div
+            className={`absolute inset-0 bg-cover bg-center rounded-full opacity-35`}
+            style={{ backgroundImage: `url(${bgImage})` }}
+          ></div>
 
           <div
             className={`relative h-[656px] w-[656px] md:w-full md:h-full flex items-center justify-end pb-16 flex-col gap-y-7 text-white ${inter.className}`}
@@ -110,13 +118,13 @@ const Invest = () => {
               Tìm hiểu thêm <ArrowRightIcon />
             </Button>
           </div>
-          <LogoDesktop />
-          <LogoMobile />
+          <LogoDesktop onLogoClick={setBgImage} bgImg={bgImage} />
+          <LogoMobile onLogoClick={setBgImage} bgImg={bgImage} />
         </div>
       </div>
       <div className="mt-14 pl-3 md:pl-[102px]">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-[152px] gap-y-8">
-          <div className="flex flex-col gap-y-3">
+          <div className="flex flex-col gap-y-3 md:sticky md:top-28 md:mb-28 md:self-start">
             <h3
               className={`font-bold md:font-semibold text-sm md:text-base text-[#165BB8] flex items-center -ml-2 ${inter.className}`}
             >
@@ -134,10 +142,11 @@ const Invest = () => {
               cậy từ những Người đồng hành.
             </p>
           </div>
+
           <div className="flex flex-col">
             {statsData.map((item, index) => (
               <div key={index}>
-                <div className="flex items-center gap-x-4 md:gap-x-[62px] pl-3 md:pl-0 py-[38px] md:border-l-[1px] md:border-[#E5E5E5]">
+                <div className="flex items-center gap-x-4 md:gap-x-[62px] pl-3 md:pl-12 py-[38px] md:border-l-[1px] md:border-[#E5E5E5]">
                   <div className="p-5 md:w-[170px] md:h-[170px] bg-[#FBFBFB] rounded-full flex items-center justify-center">
                     <Image
                       src={item.imageSrc}
@@ -152,9 +161,7 @@ const Invest = () => {
                       {item.value}{" "}
                       <span className="font-semibold">{item.unit}</span>
                     </p>
-                    <p
-                      className={`font-semibold text-[#646464] text-sm md:text-xl`}
-                    >
+                    <p className="font-semibold text-[#646464] text-sm md:text-xl">
                       {item.description}
                     </p>
                   </div>

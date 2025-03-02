@@ -1,9 +1,33 @@
+"use client";
+
 import { inter } from "@/config/font";
 import { Dot, QuoteIcon } from "lucide-react";
 import Image from "next/image";
+import { useState } from "react";
+import LogoSlider from "./logos";
 import { CarouselDemo } from "./slide";
 
 const Collab = () => {
+  const [selectedCollab, setSelectedCollab] = useState(0);
+
+  const collab = [
+    {
+      word: "WATG rất vui khi được làm việc với đội ngũ của Ami&M trong dự án độc đáo và đặc biệt này. Chúng tôi hy vọng sẽ được tiếp tục đồng hành cùng Ami&M trên hành trình hiện thực hóa tầm nhìn cũng như hỗ trợ Ami&M ở những bước triển khai dự án tiếp theo.",
+      name: "Ông Richard Moore",
+      title: "Nguyên Giám đốc điều hành khu vực Châu Á - Thái Bình Dương, WATG",
+    },
+    {
+      word: "Trải qua một năm đồng hành cùng Ami&M trong dự án chuyển đổi số, chúng tôi thực sự ấn tượng với phong cách làm việc chuyên nghiệp và những câu chuyện đầy cảm hứng. Không chỉ tập trung tìm kiếm giải pháp, Ami&M luôn thật tâm thấu hiểu và sẵn sàng chia sẻ với những thách thức của Đối tác.",
+      name: "Bà Nguyễn Loan Anh",
+      title: "Trưởng Ban Truyền thông, Base.vn",
+    },
+    {
+      word: "	Hành trình hợp tác của Ami&M và RMA hướng tới việc phát triển và làm mới thương hiệu Ami&M với chiến lược hình ảnh mới mẻ và bám sát tinh thần của Tập đoàn ở thời điểm hiện tại. Trong quá trình làm việc, tôi thấy được tinh thần kiên định và chuyên nghiệp của đội ngũ Ami&M.",
+      name: "Ông Richard Moore",
+      title: "Chủ tịch Richard Moore Associates",
+    },
+  ];
+
   return (
     <>
       <div className="relative">
@@ -19,7 +43,7 @@ const Collab = () => {
           <div className="absolute inset-0 bg-gradient-to-b from-transparent from-40% to-[#102A4D]" />
 
           <blockquote
-            className={`md:${inter.className} absolute bottom-0 left-1/2 w-[290px] md:w-[1920px] transform -translate-x-1/2 -translate-y-1/2 text-center text-xl md:text-[40px] font-bold text-[#F9F9F9]`}
+            className={`md:${inter.className} leading-normal absolute bottom-0 left-1/2 w-[290px] md:w-[1920px] transform -translate-x-1/2 -translate-y-1/2 text-center text-xl md:text-[40px] font-bold text-[#F9F9F9]`}
           >
             “Tình bằng hữu, sự chính trực và tinh thần{" "}
             <br className="hidden md:block" />
@@ -41,49 +65,45 @@ const Collab = () => {
                 HỢP TÁC VỮNG BỀN
               </h3>
               <p className="max-w-[695px] text-[28px] text-white">
-                Chúng tôi thực sự hứng khởi khi đồng hành cùng Ami&M bởi ở đây
-                có một đội ngũ nhân sự không chỉ giàu kinh nghiệm trong lĩnh vực
-                ngân hàng - tài chính mà quan trọng hơn đầy nhiệt tâm với mong
-                muốn đóng góp vào sự phát triển chung của quá trình giáo dục
-                định hướng thế hệ trẻ.
+                {collab[selectedCollab].word}
               </p>
               <div>
-                <p className="text-[22px] text-white">TS. Đinh Thanh Vân</p>
+                <p className="text-[22px] text-white">
+                  {collab[selectedCollab].name}
+                </p>
                 <p className="flex items-center text-sm text-white">
                   <Dot className="size-4 text-[#8DC63F] -ml-2" />
                   <Dot className="size-8 text-[#35AA94] -ml-3" />
                   <Dot className="size-12 text-[#0088CB] -ml-6 -mr-2" />
-                  Phó trưởng Khoa Ngân hàng - Tài chính, ĐH Kinh tế, ĐHQGHN
+                  {collab[selectedCollab].title}
                   <Dot className="size-12 text-[#996598] -mr-6 -ml-2" />
                   <Dot className="size-8 text-[#D24D70] -mr-3" />
                   <Dot className="size-4 text-[#ED1B2F] -mr-2" />
                 </p>
               </div>
-              <div className="flex gap-2 z-50">
-                <Image
-                  src="/images/collab-select.png"
-                  width={94}
-                  height={94}
-                  alt="collab-1"
-                />
-                <Image
-                  src="/images/collab-1.png"
-                  width={95}
-                  height={70}
-                  alt="collab-2"
-                />
-                <Image
-                  src="/images/collab-2.png"
-                  width={96}
-                  height={70}
-                  alt="collab-3"
-                />
+
+              <div className="flex gap-8 z-50">
+                {[0, 1, 2].map((index) => (
+                  <Image
+                    key={index}
+                    src={`/images/select-${index + 1}.png`}
+                    width={80}
+                    height={80}
+                    alt={`collab-${index}`}
+                    className={`cursor-pointer rounded-full w-[94px] h-[94px] ${
+                      selectedCollab === index
+                        ? "border-2 scale-125 border-white"
+                        : ""
+                    }`}
+                    onClick={() => setSelectedCollab(index)}
+                  />
+                ))}
               </div>
             </div>
 
             <div className="relative h-[720px] bottom-[50px] z-20 right-[20%]">
               <Image
-                src="/images/human-collab.png"
+                src={`/images/per-${selectedCollab + 1}.png`}
                 alt="human collaboration"
                 fill
                 className="object-cover"
@@ -124,55 +144,10 @@ const Collab = () => {
         <p className="absolute left-[26%] md:translate-x-0 md:left-60 top-10 text-2xl md:text-[26px] font-bold text-transparent bg-gradient-to-r from-blue-500 to-red-500 bg-clip-text">
           ĐỒNG HÀNH CÙNG AMI&M
         </p>
-        <div className="flex gap-[74px] absolute left-0 top-32 z-30 items-center">
-          {Array.from({ length: 5 }).map((_, index) => {
-            const sizes = [
-              { width: 195, height: 85 },
-              { width: 160, height: 70 },
-              { width: 100, height: 80 },
-              { width: 75, height: 80 },
-              { width: 100, height: 80 },
-            ];
-
-            return (
-              <div key={index}>
-                <Image
-                  src={`/brand-${index + 1}.svg`}
-                  width={sizes[index].width}
-                  height={sizes[index].height}
-                  alt={`collab-${index + 1}`}
-                  style={{
-                    width: sizes[index].width,
-                    height: sizes[index].height,
-                  }}
-                />
-              </div>
-            );
-          })}
-          {Array.from({ length: 5 }).map((_, index) => {
-            const sizes = [
-              { width: 195, height: 85 },
-              { width: 160, height: 70 },
-              { width: 100, height: 80 },
-              { width: 75, height: 80 },
-              { width: 100, height: 80 },
-            ];
-
-            return (
-              <div key={index}>
-                <Image
-                  src={`/brand-${index + 1}.svg`}
-                  width={sizes[index].width}
-                  height={sizes[index].height}
-                  alt={`collab-${index + 1}`}
-                  style={{
-                    width: sizes[index].width,
-                    height: sizes[index].height,
-                  }}
-                />
-              </div>
-            );
-          })}
+        <div className="flex">
+          <div className="flex gap-x-4 md:gap-x-[74px] absolute right-0 top-20 md:top-32 z-30 items-center w-full">
+            <LogoSlider />
+          </div>
         </div>
       </div>
     </>
