@@ -1,14 +1,16 @@
 "use client";
 
 import { inter } from "@/config/font";
+import gsap from "gsap";
 import { Dot, QuoteIcon } from "lucide-react";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import LogoSlider from "./logos";
-import { CarouselDemo } from "./slide";
+import { CarouselBrand } from "./slide";
 
 const Collab = () => {
   const [selectedCollab, setSelectedCollab] = useState(0);
+  const collabRef = useRef(null);
 
   const collab = [
     {
@@ -27,6 +29,16 @@ const Collab = () => {
       title: "Chủ tịch Richard Moore Associates",
     },
   ];
+
+  useEffect(() => {
+    if (collabRef.current) {
+      gsap.fromTo(
+        collabRef.current,
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }
+      );
+    }
+  }, [selectedCollab]);
 
   return (
     <>
@@ -56,8 +68,9 @@ const Collab = () => {
         </div>
 
         <div className="relative w-full overflow-hidden bg-gradient-to-b from-[#102A4D] via-[#191868] to-[#191868] pl-3 md:pl-[300px] pt-16 md:pt-[170px]">
-          <div className="hidden md:grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="hidden md:grid grid-cols-1 md:grid-cols-2 gap-8 relative z-20">
             <div
+              ref={collabRef}
               className={`${inter.className} flex flex-col gap-y-6 font-semibold`}
             >
               <h3 className="flex items-center text-white/80">
@@ -82,7 +95,7 @@ const Collab = () => {
                 </p>
               </div>
 
-              <div className="flex gap-8 z-50">
+              <div className="flex gap-8">
                 {[0, 1, 2].map((index) => (
                   <Image
                     key={index}
@@ -110,9 +123,9 @@ const Collab = () => {
               />
             </div>
           </div>
-          <CarouselDemo />
+          <CarouselBrand />
 
-          <div className="absolute left-0 top-44">
+          <div className="absolute left-0 top-44 z-[0]">
             <Image
               src="/vector.svg"
               alt="vector decoration"
@@ -127,7 +140,7 @@ const Collab = () => {
         </div>
       </div>
       <div
-        className="relative bottom-16 md:bottom-36 h-[190px] min-w-full md:h-[240px] overflow-hidden -ml-12"
+        className="absolute bottom-0 left-0 right-0 -mb-24 h-[190px] min-w-full md:h-[240px] -ml-12"
         style={{
           backgroundImage: "url(/union.svg)",
           backgroundRepeat: "no-repeat",

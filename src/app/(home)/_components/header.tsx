@@ -1,3 +1,6 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import {
@@ -12,9 +15,36 @@ import Image from "next/image";
 import Link from "next/link";
 
 const Header = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 1000) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <header className="bg-[url(/images/banner.png)] bg-cover bg-[-900px_center] bg-no-repeat md:bg-center h-screen w-full">
-      <div className="container mx-auto flex justify-between pt-6 md:px-0 px-[18px]">
+    <header
+      className={`transition-all duration-300 ${
+        isScrolled
+          ? "fixed top-0 left-0 w-full bg-neutral-300 bg-opacity-80 shadow-lg z-50 flex items-center justify-between"
+          : "bg-[url(/images/banner.png)] bg-cover bg-[-900px_center] bg-no-repeat md:bg-center h-screen w-full"
+      }`}
+    >
+      <div
+        className={`container mx-auto flex justify-between md:px-0 px-[18px] ${
+          isScrolled ? "pt-3" : "pt-6"
+        }`}
+      >
         <div className="logo">
           <Link href={"/"}>
             <Image
@@ -22,7 +52,11 @@ const Header = () => {
               width={221}
               height={117}
               alt="logo"
-              className="w-[72px] h-[37px] md:w-[221px] md:h-[117px]"
+              className={`w-[72px] h-[37px] ${
+                isScrolled
+                  ? "`w-[90px] h-[60px] pb-3"
+                  : "md:w-[221px] md:h-[117px]"
+              }`}
             />
           </Link>
         </div>

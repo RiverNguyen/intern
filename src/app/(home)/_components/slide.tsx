@@ -15,7 +15,7 @@ import { Dot } from "lucide-react";
 import { inter } from "@/config/font";
 import { useEffect, useState } from "react";
 
-export function CarouselDemo() {
+export function CarouselBrand() {
   const [api, setApi] = useState<CarouselApi>();
   const [currentIndex, setCurrentIndex] = useState(0);
 
